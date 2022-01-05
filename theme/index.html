@@ -1,0 +1,215 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="./syntax-highlighter.css">
+            <link rel="stylesheet" href="./styles.css">
+            
+            <title>Overview</title>
+
+            <script type="module">
+                import './index.bundle.js';
+            </script>
+
+            <script>
+                window.addEventListener('load', (event) => {
+                    document.querySelector('body').removeAttribute('hidden');
+                });
+            </script>
+        </head>
+        <body hidden>
+            <page-state key="theme"></page-state>
+            <page-container>
+                <page-navigator id="nav" slot="navigator"></page-navigator>
+                <div class="page-content" slot="content">
+                    <article class="md-content"><p>The <code>@quark-elements/theme</code> package is a generic theming library for web components based on design tokens, which are converted to CSS custom variables for use. It also supports svg icons, which are linked to themes.</p>
+<h1 id="installation">Installation</h1>
+<pre><code class="language-powershell">npm install @quark<span class="token operator">-</span>elements<span class="token operator">/</span>theme <span class="token operator">--</span>save
+</code></pre>
+<h1 id="creating-a-theme">Creating a Theme</h1>
+<p>Before getting into creating themes, there are 3 import concepts to understand.</p>
+<ul>
+<li>ThemeManager: This class manages all the theme instances (brands) for an application. A singleton instance, <code>window.themeManager</code> is automatically created that you will interact with.</li>
+<li>Theme: This is the application or design system specific template for all brands and defines all the required design tokens and icons. It is created by subclassing <code>Theme</code>.</li>
+<li>Brand: This is a named instance of the <code>Theme</code> subclass which allows you to create one or more unique brands or variants by overriding the default design token and icon values. You will always have a least one brand (instance).</li>
+<li>Device Type: This can either be <code>mobile</code> or <code>desktop</code>. A theme or brand can provide different tokens and icons based on the device type. Note, the device type is determined by the browser and large tablets are considered <code>desktop</code>.</li>
+</ul>
+<p>To theme an application, you need to import <code>Theme</code> in order to create a theme template, and <code>themeManager</code> which is used to register the theme brands that you create and set the active theme brand.</p>
+<pre><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>thing<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Hello<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+<pre><code class="language-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Theme<span class="token punctuation">,</span> themeManager <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@quark-elements/theme'</span><span class="token punctuation">;</span>
+</code></pre>
+<p>A typical custom theme definition looks like this:</p>
+<pre><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">MyTheme</span> <span class="token keyword">extends</span> <span class="token class-name">Theme</span> <span class="token punctuation">{</span>  
+    <span class="token comment">// The theme design tokens that are shared by all brands.</span>
+    <span class="token keyword">static</span> <span class="token keyword">get</span> <span class="token function">tokens</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span>
+            <span class="token comment">// Design token definitions.</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// The theme icons that are shared by all brands.</span>
+    <span class="token keyword">static</span> <span class="token keyword">get</span> <span class="token function">icons</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span>
+            <span class="token comment">// Icon definitions.</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> <span class="token comment">/* override parameters */</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Add brand design tokens that are unique to each brand.</span>
+
+        <span class="token comment">// Add brand icons that are unique to each brand.</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The static <code>tokens</code> getter should return an object containing all the design tokens that are shared by every instance of the theme (brands) and the static <code>icons</code> getter should return an object containing all the shared icons. These are called the <code>Theme Design Tokens</code> and the <code>Theme Icons</code>.</p>
+<p>This is enough if you only want a single brand (look and feel), but if you want more than one brand then you need to override the shared design tokens (you&#39;ll always want to do this) and icon values (not so common). The values used for the design token and icon overrides should be passed in <em>via</em> the constructor. All overrides should be done in the constructor, or methods called from the constructor. These are called the <code>Brand Design Tokens</code> and the <code>Brand Icons</code>.</p>
+<h2 id="creating-theme-design-tokens">Creating Theme Design Tokens</h2>
+<p><code>Theme Design Tokens</code> are created in a static getter function called <code>tokens</code>, and each token is converted to a CSS custom property with the corresponding value. Theme definitions can also support light and dark modes by providing an optional dark mode value for design tokens (typically color values). If a dark mode value isn&#39;t provided then the light value will be provided for both the light and dark mode. You can also have separate light/dark values for mobile or desktop device types. The code snippet below shows the design token definition possibilities.</p>
+<pre><code class="language-javascript"><span class="token keyword">static</span> <span class="token keyword">get</span> <span class="token function">tokens</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token comment">// A design token with a light value only.</span>
+        <span class="token comment">// Used for light and dark mode, and mobile and desktop device types.</span>
+        <span class="token string">'theme-primary-color'</span><span class="token operator">:</span> <span class="token string">'#1976D2'</span><span class="token punctuation">,</span>
+
+        <span class="token comment">// A design token with a light and a dark value.</span>
+        <span class="token comment">// Used for mobile and desktop device types.</span>
+        <span class="token string">'theme-on-window-color'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            light<span class="token operator">:</span> <span class="token string">'rgba(0, 0, 0, 0.87)'</span><span class="token punctuation">,</span>
+            dark<span class="token operator">:</span> <span class="token string">'rgba(255, 255, 255, 0.87)'</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+        <span class="token comment">// A design token with separate light and a dark values for mobile and desktop device types.</span>
+        <span class="token comment">// Used for mobile and desktop device types.</span>
+        <span class="token string">'theme-window-color'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            desktop<span class="token operator">:</span> <span class="token punctuation">{</span>
+                light<span class="token operator">:</span> <span class="token string">'#FAFAFA'</span><span class="token punctuation">,</span>
+                dark<span class="token operator">:</span> <span class="token string">'#1E1E1E'</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            mobile<span class="token operator">:</span> <span class="token punctuation">{</span>
+                light<span class="token operator">:</span> <span class="token string">'#E0F2F1'</span><span class="token punctuation">,</span>
+                dark<span class="token operator">:</span> <span class="token string">'#1A237E'</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+        <span class="token comment">// A design token with a reference value.</span>
+        <span class="token string">'theme-typography-font-serif'</span><span class="token operator">:</span> <span class="token string">'Georgia'</span><span class="token punctuation">,</span>
+        <span class="token string">'theme-typography-headline-font'</span><span class="token operator">:</span> <span class="token string">'{theme-typography-font-serif}'</span><span class="token punctuation">,</span>
+
+        <span class="token comment">// A design token with a reference value and a default value.</span>
+        <span class="token string">'theme-typography-headline-weight'</span><span class="token operator">:</span> <span class="token string">'{theme-typography-weight-bold:600}'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The dark and light values are resolved as follows if a value hasn&#39;t been provided:</p>
+<p><strong>Mobile</strong></p>
+<p>dark = value.mobile.dark | value.desktop.dark | value.desktop.light | value.</p>
+<p>light = value.mobile.light | value.desktop.light | value.</p>
+<p><strong>Desktop</strong></p>
+<p>dark = value.desktop.dark | value.desktop.light | value.</p>
+<p>light = value.desktop.light | value.</p>
+<p>There should always be at least a light desktop value to fall back on, which can be provided as a simple value string.</p>
+<h2 id="creating-theme-icons">Creating Theme Icons</h2>
+<p><code>Theme Icons</code> are created in a static getter function called <code>icons</code>, and each icons, which consists of an svg snippet, is converted to am html svg element containing the snippet. Icon definitions can also support <code>mobile</code> and <code>desktop</code> by providing different svg snippets for the different device types. If different device type icons aren&#39;t provided then the same icon will be used for both. If a size isn&#39;t provided, then it is assumed that the icon fits on a <code>24x24px</code> grid. The code snippet below shows the icon definition possibilities.</p>
+<pre><code class="language-javascript"><span class="token keyword">static</span> <span class="token keyword">get</span> <span class="token function">icons</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// A single 24x24px (default) icon for mobile and desktop.</span>
+        <span class="token string">'chevron-up'</span><span class="token operator">:</span> <span class="token string">'&lt;g>&lt;path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/>&lt;/g>'</span><span class="token punctuation">,</span>
+
+        <span class="token comment">// A single 40x40px icon for mobile and desktop.</span>
+        <span class="token string">'chevron-down'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            icon<span class="token operator">:</span> <span class="token string">'&lt;g>&lt;path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>&lt;/g>'</span><span class="token punctuation">,</span>
+            size<span class="token operator">:</span> <span class="token number">40</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+        <span class="token comment">// Different icons for mobile and desktop.</span>
+        <span class="token string">'chevron-left'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token comment">// Mobile icon is 24x24px (default).</span>
+            mobile<span class="token operator">:</span> <span class="token punctuation">{</span>
+                icon<span class="token operator">:</span> <span class="token string">'&lt;g>&lt;path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>&lt;/g>'</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token comment">// Desktop icon is 40x40px.</span>
+            desktop<span class="token operator">:</span> <span class="token punctuation">{</span>
+                icon<span class="token operator">:</span> <span class="token string">'&lt;g>&lt;path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>&lt;/g>'</span><span class="token punctuation">,</span>
+                size<span class="token operator">:</span> <span class="token number">40</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Using different icons for mobile and desktop is usually not a good idea, and if the only difference is size then a better approach is to use different size, margin or padding design token values rather than different icons.</p>
+<h2 id="creating-brand-design-tokens">Creating Brand Design Tokens</h2>
+<p>All instances of a custom <code>Theme</code> class will share the same global design tokens. If you want different values for certain design tokens to create different brands, then you have to create them per instance, as shown below:</p>
+<pre><code class="language-javascript"><span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> primaryColor</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Add brand design tokens that are unique to each brand.</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">addToken</span><span class="token punctuation">(</span><span class="token string">'theme-primary-color'</span><span class="token punctuation">,</span> primary<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Add brand icons that are unique to each brand.</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>You can then create brands like this:</p>
+<pre><code class="language-javascript"><span class="token keyword">const</span> blueThemeBrand <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyTheme</span><span class="token punctuation">(</span><span class="token string">'blue'</span><span class="token punctuation">,</span> <span class="token string">'#1976D2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> redThemeBrand <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyTheme</span><span class="token punctuation">(</span><span class="token string">'red'</span><span class="token punctuation">,</span> <span class="token string">'#F44336'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> greenThemeBrand <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyTheme</span><span class="token punctuation">(</span><span class="token string">'green'</span><span class="token punctuation">,</span> <span class="token string">'#388E3C'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>The <code>addToken</code> method takes the design token name as the first parameter, and the value object as the second parameter. The second parameter should be an object identical to the ones used to define the global design tokens. i.e. This is valid:</p>
+<pre><code class="language-javascript"><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">addToken</span><span class="token punctuation">(</span><span class="token string">'theme-primary-window'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    desktop<span class="token operator">:</span> <span class="token punctuation">{</span>
+        light<span class="token operator">:</span> <span class="token string">'#FAFAFA'</span><span class="token punctuation">,</span>
+        dark<span class="token operator">:</span> <span class="token string">'#1E1E1E'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    mobile<span class="token operator">:</span> <span class="token punctuation">{</span>
+        light<span class="token operator">:</span> <span class="token string">'#E0F2F1'</span><span class="token punctuation">,</span>
+        dark<span class="token operator">:</span> <span class="token string">'#1A237E'</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="creating-brand-icons">Creating Brand Icons</h2>
+<p>All instances of a custom <code>Theme</code> class will share the same global icons. If you want different values for certain icons to create different brands, then you have to create them per instance, as shown below:</p>
+<pre><code class="language-javascript"><span class="token comment">// As created in the previous section.</span>
+<span class="token keyword">const</span> redThemeBrand <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyTheme</span><span class="token punctuation">(</span><span class="token string">'red'</span><span class="token punctuation">,</span> <span class="token string">'#F44336'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+redThemeBrand<span class="token punctuation">.</span><span class="token function">addIcon</span><span class="token punctuation">(</span><span class="token string">'chevron-right'</span><span class="token punctuation">,</span> <span class="token string">'&lt;g>&lt;path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>&lt;/g>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>You can also add them in the constructor like design tokens, but it&#39;s a bit clumsy.</p>
+<pre><code class="language-javascript"><span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> primaryColor<span class="token punctuation">,</span> icon</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Add brand design tokens that are unique to each brand.</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">addToken</span><span class="token punctuation">(</span><span class="token string">'theme-primary-color'</span><span class="token punctuation">,</span> primary<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Add brand icons that are unique to each brand.</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">addIcon</span><span class="token punctuation">(</span><span class="token string">'chevron-right'</span><span class="token punctuation">,</span> icon<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The <code>addIcon</code> method takes the icon name as the first parameter, and the value object as the second parameter. The second parameter should be an object identical to the ones used to define the global icons. i.e. This is valid:</p>
+<pre><code class="language-javascript"><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">addIcon</span><span class="token punctuation">(</span><span class="token string">'chevron-up'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    mobile<span class="token operator">:</span> <span class="token punctuation">{</span>
+        icon<span class="token operator">:</span> <span class="token string">'&lt;g>&lt;path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/>&lt;/g>'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    desktop<span class="token operator">:</span> <span class="token punctuation">{</span>
+        icon<span class="token operator">:</span> <span class="token string">'&lt;g>&lt;path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/>&lt;/g>'</span><span class="token punctuation">,</span>
+        size<span class="token operator">:</span> <span class="token number">24</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h1 id="using-a-theme">Using a Theme</h1>
+<p>TODO</p>
+</article>
+                </div>
+            </page-container>
+            
+            <script>
+                const nav = document.getElementById('nav');
+                nav.items = JSON.parse('[{"label":"Getting Started","items":[{"url":"/theme/","label":"Overview"},{"url":"/theme/installation/","label":"Installation"},{"url":"/theme/usage/","label":"Usage"}]}]');
+            </script>
+        </body>
+        </html>
+    

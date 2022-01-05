@@ -1,0 +1,62 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="./styles.css">
+            <title>Home</title>
+
+            <script type="module">
+                import './index.bundle.js';
+            </script>
+
+            <script>
+                window.addEventListener('load', (event) => {
+                    document.querySelector('body').removeAttribute('hidden');
+                });
+            </script>
+        </head>
+        <body hidden>
+            
+        <h1>Quark Elements Documentation</h1>
+
+        <article class="card-container">
+            
+                <section class="card">
+                    <a href="/doc/" target="_blank">
+                        <h2 class="card-label">Doc</h2>
+                        <p class="card-description">A simple static site generator for creating design system documentation.</p>
+                    </a>
+                </section>
+            
+
+                <section class="card">
+                    <a href="/theme/" target="_blank">
+                        <h2 class="card-label">Theme</h2>
+                        <p class="card-description">A standalone theming library.</p>
+                    </a>
+                </section>
+            
+
+                <section class="card">
+                    <a href="/core/" target="_blank">
+                        <h2 class="card-label">Core</h2>
+                        <p class="card-description">A library for creating Web Component based design systems.</p>
+                    </a>
+                </section>
+            
+
+                <section class="card">
+                    <a href="/material/" target="_blank">
+                        <h2 class="card-label">Material</h2>
+                        <p class="card-description">A suite of Material Design Web Components.</p>
+                    </a>
+                </section>
+            
+        </article>
+    
+        </body>
+        </html>
+    
