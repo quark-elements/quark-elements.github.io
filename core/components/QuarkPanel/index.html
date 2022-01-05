@@ -1,0 +1,98 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="./../../syntax-highlighter.css">
+            <link rel="stylesheet" href="./../../styles.css">
+            <title>QuarkPanel</title>
+
+            <script type="module">
+                import './../../index.bundle.js';
+            </script>
+
+            <script>
+                window.addEventListener('load', (event) => {
+                    document.querySelector('body').removeAttribute('hidden');
+                });
+            </script>
+        </head>
+        <body hidden>
+            <page-state key="core"></page-state>
+            <page-container>
+                <page-navigator id="nav" slot="navigator"></page-navigator>
+                <div class="page-content" slot="content">
+                    
+                    <component-header display-name="Panel " component-name="QuarkPanel" tag=""
+                                      superclass="QuarkElement" superclass-url="/material/components/QuarkElement/" 
+                                      superclass-package="" superclass-package-url=""
+                                      summary="The base component class for all Quark panel components.">
+                    </component-header>
+                    <page-tabs selected-index="0">
+                        <page-tab label="Overview">No overview yet</page-tab>
+                        <page-tab label="Demos">No demo yet</page-tab>
+    
+                        <page-tab label="Documentation">
+                            
+                                <collapsible-panel label="Attributes" persist-key="QuarkPanel_attributes">
+                                    
+                                        
+            <component-part caption="dir:&nbsp;" detail="string | &#039;ltr&#039; ('ltr', 'rtl')" description="The text direction." 
+                                     superclass="QuarkElement" superclass-url="/material/components/QuarkElement/">
+            </component-part>
+        
+                                    
+                                </collapsible-panel>
+                            
+    
+                            
+                                <collapsible-panel label="Properties" persist-key="QuarkPanel_properties">
+                                    
+                                        
+            <component-part caption="dir:&nbsp;" detail="string | &#039;ltr&#039; ('ltr', 'rtl')" description="The text direction." 
+                                     superclass="QuarkElement" superclass-url="/material/components/QuarkElement/" >
+            </component-part>
+        
+                                    
+
+                                        
+            <component-part caption="isLTR:&nbsp;" detail="boolean" description="Whether or not the text direction is LTR (default) or RTL." 
+                                     superclass="QuarkElement" superclass-url="/material/components/QuarkElement/" >
+            </component-part>
+        
+                                    
+    
+                                    
+                                </collapsible-panel>
+                            
+                                
+                            
+    
+                            
+    
+                            
+                                <collapsible-panel label="Slots" persist-key="QuarkPanel_slots">
+                                    
+                                        <component-part caption="(default)" description="Default"></component-part>
+                                            
+                                </collapsible-panel>
+                            
+    
+                            
+    
+                            
+                        </page-tab>
+                    </page-tabs>
+                
+                </div>
+            </page-container>
+            
+            <script>
+                const nav = document.getElementById('nav');
+                nav.items = JSON.parse('[{"label":"Getting Started","items":[{"url":"/core/","label":"Overview"},{"url":"/core/installation/","label":"Installation"},{"url":"/core/usage/","label":"Usage"},{"url":"/core/theming/","label":"Theming"}]},{"label":"Base Components","items":[{"label":"Core ","items":[{"url":"/core/components/QuarkButton/","label":"Button ","category":"Core ","designSystem":null},{"url":"/core/components/QuarkElement/","label":"Element ","category":"Core ","designSystem":null},{"url":"/core/components/QuarkIcon/","label":"Icon ","category":"Core ","designSystem":null},{"url":"/core/components/QuarkPanel/","label":"Panel ","category":"Core ","designSystem":null}]}]},{"label":"Mixins","items":[{"url":"/core/mixins/","label":"Overview"}]},{"label":"Controllers","items":[{"url":"/core/controllers/","label":"Overview"}]},{"label":"Styles","items":[{"url":"/core/styles/","label":"Overview"}]}]');
+            </script>
+        </body>
+        </html>
+    
