@@ -26,14 +26,12 @@
                 <div class="page-content" slot="content">
                     
                     <component-header display-name="listen" detail="@listen from core" summary="A custom event listener."></component-header>
-
                     
-
+                    <div style="padding: 16px;">
+                        <decorator-part name="listen" params="eventName: string" return-value="void"></decorator-part>
                     
-
-                    <collapsible-panel label="API" persist-key="listen_decorator_api">
-                        <div>TODO</div>
-                    </collapsible-panel>
+                        
+                    </div>
                 
                 </div>
             </page-container>

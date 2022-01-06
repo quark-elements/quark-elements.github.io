@@ -26,26 +26,16 @@
                 <div class="page-content" slot="content">
                     
                     <component-header display-name="watch" detail="@watch from core" summary="A property change observer."></component-header>
-
                     
-                        <collapsible-panel label="Overview" persist-key="watch_decorator_overview">
+                    <div style="padding: 16px;">
+                        <decorator-part name="watch" params="propName: string | Array<string>" return-value="void"></decorator-part>
+                    
+                        
                             <section>
         <div>Watch Decorator Sample</div>
     </section>
-                        </collapsible-panel>
-                    
-
-                    
-                        <collapsible-panel label="Demo" persist-key="watch_decorator_demo">
-                            <section>
-        <div>Watch Decorator Demo</div>
-    </section>
-                        </collapsible-panel>
-                    
-
-                    <collapsible-panel label="API" persist-key="watch_decorator_api">
-                        <div>TODO</div>
-                    </collapsible-panel>
+                        
+                    </div>
                 
                 </div>
             </page-container>

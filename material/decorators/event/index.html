@@ -26,14 +26,25 @@
                 <div class="page-content" slot="content">
                     
                     <component-header display-name="event" detail="@event from core" summary="A custom event emitter."></component-header>
-
                     
-
+                    <div style="padding: 16px;">
+                        <decorator-part name="event" params="eventName: string" return-value="void"></decorator-part>
                     
-
-                    <collapsible-panel label="API" persist-key="event_decorator_api">
-                        <div>TODO</div>
-                    </collapsible-panel>
+                        
+                            <section class="md-content"><p>Lorem ipsum dolor &quot;sit&quot; amet, <code>consectetur adipiscing elit</code>. Aenean nec augue lectus. Cras in tristique ligula, sed pulvinar est.
+Nulla facilisi. Duis non tincidunt purus. Pellentesque tristique consectetur quam, non vestibulum nisi molestie vel. Fusce auctor pellentesque lectus,
+vel elementum nulla euismod sed. Integer suscipit faucibus magna. Suspendisse quis justo vel mi commodo malesuada et eget massa.</p>
+<pre><code class="language-javascript"><span class="token keyword">const</span> descriptor <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token function">get</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token operator">:</span> HTMLElement<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">EventEmitter</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> eventName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    enumerable<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    configurable<span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</section>
+                        
+                    </div>
                 
                 </div>
             </page-container>
