@@ -31,16 +31,16 @@
                         <decorator-part name="watch" params="propName?: string | Array<string>" return-value="void"></decorator-part>
                     
                         
-                            <section class="md-content"><p>Runs after an observed property changes, e.g. @property or @state. This will only run after the first
+                            <section class="md-content"><p>Runs after an observed property changes, e.g. <code>@property</code> or <code>@state</code>. This will only run after the first
 update, so initial attribute =&gt; property mappings will not trigger the watch handler.</p>
 <p>Note that changing props in a watch handler <em>will</em> trigger a rerender. To make pre-update changes to observed
 properties, use the <code>update()</code> method instead.</p>
-<h2 id="usage">Usage:</h2>
+<h3 id="usage">Usage</h3>
 <pre><code class="language-ts"><span class="token keyword">import</span> <span class="token punctuation">{</span> watch <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@quark-elements/core/decorators/watch.js'</span><span class="token punctuation">;</span>
 
 <span class="token decorator"><span class="token at operator">@</span><span class="token function">watch</span></span><span class="token punctuation">(</span><span class="token string">'propName'</span><span class="token punctuation">)</span>
 <span class="token function">handlePropChange</span><span class="token punctuation">(</span>propName<span class="token punctuation">,</span> oldValue<span class="token punctuation">,</span> newValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token comment">// Whatever</span>
+  <span class="token comment">// Whatever</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>You can watch multiple properties with the same handler by passing an array of property names.</p>
@@ -48,7 +48,7 @@ properties, use the <code>update()</code> method instead.</p>
 
 <span class="token decorator"><span class="token at operator">@</span><span class="token function">watch</span></span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'propName1'</span><span class="token punctuation">,</span> <span class="token string">'propName2'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token function">handlePropChange</span><span class="token punctuation">(</span>propName<span class="token punctuation">,</span> oldValue<span class="token punctuation">,</span> newValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token comment">// Whatever</span>
+    <span class="token comment">// Whatever</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>You can watch all properties with the same handler by not passing a property name parameter.</p>
@@ -56,7 +56,7 @@ properties, use the <code>update()</code> method instead.</p>
 
 <span class="token decorator"><span class="token at operator">@</span><span class="token function">watch</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token function">handlePropChange</span><span class="token punctuation">(</span>propName<span class="token punctuation">,</span> oldValue<span class="token punctuation">,</span> newValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token comment">// Whatever</span>
+    <span class="token comment">// Whatever</span>
 <span class="token punctuation">}</span>
 </code></pre>
 </section>
