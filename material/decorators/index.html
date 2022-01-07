@@ -24,9 +24,51 @@
             <page-container>
                 <page-navigator id="nav" slot="navigator"></page-navigator>
                 <div class="page-content" slot="content">
-                    <article class="md-content"><h1 id="decorators">Decorators</h1>
-<p>Stuff goes here.</p>
-</article>
+                    
+            <article class="md-content">
+                <h1 id="decorators">Decorators</h1>
+<p>Decorators are functions that can be used to modify the behavior of classes, class methods and class fields. They are a stage 2 proposal for addition to the ECMAScript standard and have not been implemented by any browsers as yet, so you need to use a compiler like Babel or TypeScript. Lit provides a number of <a href="https://lit.dev/docs/components/decorators/" target="_blank">custom decorators</a> to simplify web component development with Lit and TypeScript, and Quark Core provides a couple more to fill in the gaps.</p>
+<blockquote>
+<p>These decorators are only of use if you&#39;re developing your own web components using Lit. You don&#39;t need them if you&#39;re just using the Quark Elements in an application.</p>
+</blockquote>
+
+            </article>
+
+            
+                <div class="md-content">
+                    <h2>Additional Decorators</h2>
+
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th>Decorator</th>
+                                <th>Summary</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                                    <tr>
+                                        <td><a href="/material/decorators/event/">@event</a></td>
+                                        <td>A custom event emitter.</td>
+                                    </tr>
+                                
+
+                                    <tr>
+                                        <td><a href="/material/decorators/listen/">@listen</a></td>
+                                        <td>A custom event listener.</td>
+                                    </tr>
+                                
+
+                                    <tr>
+                                        <td><a href="/material/decorators/watch/">@watch</a></td>
+                                        <td>A property change observer.</td>
+                                    </tr>
+                                
+                        </tbody>
+                    </table>
+                </div>
+            
+        
                 </div>
             </page-container>
             
