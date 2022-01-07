@@ -39,7 +39,7 @@ properties, use the <code>update()</code> method instead.</p>
 <pre><code class="language-ts"><span class="token keyword">import</span> <span class="token punctuation">{</span> watch <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@quark-elements/core/decorators/watch.js'</span><span class="token punctuation">;</span>
 
 <span class="token decorator"><span class="token at operator">@</span><span class="token function">watch</span></span><span class="token punctuation">(</span><span class="token string">'propName'</span><span class="token punctuation">)</span>
-<span class="token function">handlePropChange</span><span class="token punctuation">(</span>propName<span class="token punctuation">,</span> oldValue<span class="token punctuation">,</span> newValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token function">handlePropChange</span><span class="token punctuation">(</span>propName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> oldValue<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">,</span> newValue<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment">// Whatever</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -47,7 +47,7 @@ properties, use the <code>update()</code> method instead.</p>
 <pre><code class="language-ts"><span class="token keyword">import</span> <span class="token punctuation">{</span> watch <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@quark-elements/core/decorators/watch.js'</span><span class="token punctuation">;</span>
 
 <span class="token decorator"><span class="token at operator">@</span><span class="token function">watch</span></span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'propName1'</span><span class="token punctuation">,</span> <span class="token string">'propName2'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token function">handlePropChange</span><span class="token punctuation">(</span>propName<span class="token punctuation">,</span> oldValue<span class="token punctuation">,</span> newValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token function">handlePropChange</span><span class="token punctuation">(</span>propName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> oldValue<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">,</span> newValue<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// Whatever</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -55,7 +55,7 @@ properties, use the <code>update()</code> method instead.</p>
 <pre><code class="language-ts"><span class="token keyword">import</span> <span class="token punctuation">{</span> watch <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@quark-elements/core/decorators/watch.js'</span><span class="token punctuation">;</span>
 
 <span class="token decorator"><span class="token at operator">@</span><span class="token function">watch</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token function">handlePropChange</span><span class="token punctuation">(</span>propName<span class="token punctuation">,</span> oldValue<span class="token punctuation">,</span> newValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token function">handlePropChange</span><span class="token punctuation">(</span>propName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> oldValue<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">,</span> newValue<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// Whatever</span>
 <span class="token punctuation">}</span>
 </code></pre>
