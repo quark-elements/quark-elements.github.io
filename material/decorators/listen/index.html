@@ -31,6 +31,17 @@
                         <decorator-part name="listen" params="eventName: string" return-value="void"></decorator-part>
                     
                         
+                            <section class="md-content"><p>Attaches the method as a listener for the given event.</p>
+<h2 id="usage">Usage:</h2>
+<pre><code class="language-ts"><span class="token keyword">import</span> <span class="token punctuation">{</span> listen <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@quark-elements/core/decorators/listen.js'</span><span class="token punctuation">;</span>
+
+<span class="token decorator"><span class="token at operator">@</span><span class="token function">listen</span></span><span class="token punctuation">(</span><span class="token string">'test-event'</span><span class="token punctuation">)</span>
+<span class="token function">handleTestEvent</span><span class="token punctuation">(</span>e<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Whatever</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</section>
+                        
                     </div>
                 
                 </div>
