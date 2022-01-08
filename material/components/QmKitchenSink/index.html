@@ -1,30 +1,30 @@
 
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="./../../syntax-highlighter.css">
-            <link rel="stylesheet" href="./../../styles.css">
-            <title>QmKitchenSink</title>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="stylesheet" href="./../../syntax-highlighter.css">
+                <link rel="stylesheet" href="./../../styles.css">
+                <title>QmKitchenSink</title>
 
-            <script type="module">
-                import './../../index.bundle.js';
-            </script>
+                <script type="module">
+                    import './../../index.bundle.js';
+                </script>
 
-            <script>
-                window.addEventListener('load', (event) => {
-                    document.querySelector('body').removeAttribute('hidden');
-                });
-            </script>
-        </head>
-        <body hidden>
-            <page-state key="material"></page-state>
-            <page-container>
-                <page-navigator id="nav" slot="navigator"></page-navigator>
-                <div class="page-content" slot="content">
-                    
+                <script>
+                    window.addEventListener('load', (event) => {
+                        document.querySelector('body').removeAttribute('hidden');
+                    });
+                </script>
+            </head>
+            <body hidden>
+                <page-state key="material"></page-state>
+                <page-container>
+                    <page-navigator id="nav" slot="navigator"></page-navigator>
+                    <div class="page-content" slot="content">
+                        
                     <component-header display-name="Kitchen Sink" component-name="QmKitchenSink" tag="qm-kitchen-sink"
                                       superclass="QuarkElement" superclass-url="/material/components/QuarkElement/" 
                                       superclass-package="@quark-elements/core/elements/QuarkElement.js" superclass-package-url=""
@@ -175,13 +175,13 @@
                         </page-tab>
                     </page-tabs>
                 
-                </div>
-            </page-container>
-            
-            <script>
-                const nav = document.getElementById('nav');
-                nav.items = JSON.parse('[{"label":"Getting Started","items":[{"url":"/material/","label":"Overview"},{"url":"/material/installation/","label":"Installation"},{"url":"/material/usage/","label":"Usage"},{"url":"/material/theming/","label":"Theming"}]},{"label":"Components","items":[{"url":"/material/components/components-overview/","label":"Overview"},{"label":"Image ","items":[{"url":"/material/components/QmIcon/","label":"Icon ","category":"Image ","designSystem":"Material ","packageName":"material"}]},{"url":"/material/components/QmKitchenSink/","label":"Kitchen Sink","category":null,"designSystem":"Material ","packageName":"material"},{"label":"Panels ","items":[{"url":"/material/components/QmFilledPanel/","label":"Filled Panel","category":"Panels ","designSystem":"Material ","packageName":"material"},{"url":"/material/components/QmFlatPanel/","label":"Flat Panel","category":"Panels ","designSystem":"Material ","packageName":"material"},{"url":"/material/components/QmOutlinedPanel/","label":"Outlined Panel","category":"Panels ","designSystem":"Material ","packageName":"material"},{"url":"/material/components/QmRaisedPanel/","label":"Raised Panel","category":"Panels ","designSystem":"Material ","packageName":"material"}]}]},{"label":"Base Components","items":[{"url":"/material/components/base-components-overview/","label":"Overview"},{"label":"Core ","items":[{"url":"/material/components/QuarkButton/","label":"Button ","category":"Core ","designSystem":"Core","packageName":"core"},{"url":"/material/components/QuarkElement/","label":"Element ","category":"Core ","designSystem":"Core","packageName":"core"},{"url":"/material/components/QuarkIcon/","label":"Icon ","category":"Core ","designSystem":"Core","packageName":"core"},{"url":"/material/components/QuarkPanel/","label":"Panel ","category":"Core ","designSystem":"Core","packageName":"core"}]}]},{"label":"Mixins","items":[{"url":"/material/mixins/","label":"Overview"}]},{"label":"Controllers","items":[{"url":"/material/controllers/","label":"Overview"}]},{"label":"Decorators","items":[{"url":"/material/decorators/","label":"Overview"},{"label":"Core","items":[{"url":"/material/decorators/event/","label":"event","category":"Core","designSystem":"Core","packageName":"core"},{"url":"/material/decorators/listen/","label":"listen","category":"Core","designSystem":"Core","packageName":"core"},{"url":"/material/decorators/watch/","label":"watch","category":"Core","designSystem":"Core","packageName":"core"}]}]},{"label":"Styles","items":[{"url":"/material/styles/","label":"Overview"}]}]');
-            </script>
-        </body>
-        </html>
-    
+                    </div>
+                </page-container>
+                
+                <script>
+                    const nav = document.getElementById('nav');
+                    nav.items = JSON.parse('[{"label":"Getting Started","items":[{"url":"/material/","label":"Overview"},{"url":"/material/installation/","label":"Installation"},{"url":"/material/usage/","label":"Usage"},{"url":"/material/theming/","label":"Theming"}]},{"label":"Components","items":[{"url":"/material/components/components-overview/","label":"Overview"},{"label":"Image ","items":[{"url":"/material/components/QmIcon/","label":"Icon ","category":"Image ","designSystem":"Material ","packageName":"material"}]},{"url":"/material/components/QmKitchenSink/","label":"Kitchen Sink","category":null,"designSystem":"Material ","packageName":"material"},{"label":"Panels ","items":[{"url":"/material/components/QmFilledPanel/","label":"Filled Panel","category":"Panels ","designSystem":"Material ","packageName":"material"},{"url":"/material/components/QmFlatPanel/","label":"Flat Panel","category":"Panels ","designSystem":"Material ","packageName":"material"},{"url":"/material/components/QmOutlinedPanel/","label":"Outlined Panel","category":"Panels ","designSystem":"Material ","packageName":"material"},{"url":"/material/components/QmRaisedPanel/","label":"Raised Panel","category":"Panels ","designSystem":"Material ","packageName":"material"}]}]},{"label":"Base Components","items":[{"url":"/material/components/base-components-overview/","label":"Overview"},{"label":"Core ","items":[{"url":"/material/components/QuarkButton/","label":"Button ","category":"Core ","designSystem":"Core","packageName":"core"},{"url":"/material/components/QuarkElement/","label":"Element ","category":"Core ","designSystem":"Core","packageName":"core"},{"url":"/material/components/QuarkIcon/","label":"Icon ","category":"Core ","designSystem":"Core","packageName":"core"},{"url":"/material/components/QuarkPanel/","label":"Panel ","category":"Core ","designSystem":"Core","packageName":"core"}]}]},{"label":"Mixins","items":[{"url":"/material/mixins/","label":"Overview"}]},{"label":"Controllers","items":[{"url":"/material/controllers/","label":"Overview"}]},{"label":"Decorators","items":[{"url":"/material/decorators/","label":"Overview"},{"label":"Core","items":[{"url":"/material/decorators/event/","label":"event","category":"Core","designSystem":"Core","packageName":"core"},{"url":"/material/decorators/listen/","label":"listen","category":"Core","designSystem":"Core","packageName":"core"},{"url":"/material/decorators/watch/","label":"watch","category":"Core","designSystem":"Core","packageName":"core"}]}]},{"label":"Styles","items":[{"url":"/material/styles/","label":"Overview"}]}]');
+                </script>
+            </body>
+            </html>
+        

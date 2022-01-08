@@ -1,39 +1,39 @@
 
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="./../syntax-highlighter.css">
-            <link rel="stylesheet" href="./../styles.css">
-            <title>Mixins</title>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="stylesheet" href="./../syntax-highlighter.css">
+                <link rel="stylesheet" href="./../styles.css">
+                <title>Mixins</title>
 
-            <script type="module">
-                import './../index.bundle.js';
-            </script>
+                <script type="module">
+                    import './../index.bundle.js';
+                </script>
 
-            <script>
-                window.addEventListener('load', (event) => {
-                    document.querySelector('body').removeAttribute('hidden');
-                });
-            </script>
-        </head>
-        <body hidden>
-            <page-state key="core"></page-state>
-            <page-container>
-                <page-navigator id="nav" slot="navigator"></page-navigator>
-                <div class="page-content" slot="content">
-                    
+                <script>
+                    window.addEventListener('load', (event) => {
+                        document.querySelector('body').removeAttribute('hidden');
+                    });
+                </script>
+            </head>
+            <body hidden>
+                <page-state key="core"></page-state>
+                <page-container>
+                    <page-navigator id="nav" slot="navigator"></page-navigator>
+                    <div class="page-content" slot="content">
+                        
     <h1>Mixins</h1>
 
-                </div>
-            </page-container>
-            
-            <script>
-                const nav = document.getElementById('nav');
-                nav.items = JSON.parse('[{"label":"Getting Started","items":[{"url":"/core/","label":"Overview"},{"url":"/core/installation/","label":"Installation"},{"url":"/core/usage/","label":"Usage"},{"url":"/core/theming/","label":"Theming"}]},{"label":"Base Components","items":[{"url":"/core/components/base-components-overview/","label":"Overview"},{"label":"Core ","items":[{"url":"/core/components/QuarkButton/","label":"Button ","category":"Core ","designSystem":"Core","packageName":"core"},{"url":"/core/components/QuarkElement/","label":"Element ","category":"Core ","designSystem":"Core","packageName":"core"},{"url":"/core/components/QuarkIcon/","label":"Icon ","category":"Core ","designSystem":"Core","packageName":"core"},{"url":"/core/components/QuarkPanel/","label":"Panel ","category":"Core ","designSystem":"Core","packageName":"core"}]}]},{"label":"Mixins","items":[{"url":"/core/mixins/","label":"Overview"}]},{"label":"Controllers","items":[{"url":"/core/controllers/","label":"Overview"}]},{"label":"Decorators","items":[{"url":"/core/decorators/","label":"Overview"},{"label":"Core","items":[{"url":"/core/decorators/event/","label":"event","category":"Core","designSystem":"Core","packageName":"core"},{"url":"/core/decorators/listen/","label":"listen","category":"Core","designSystem":"Core","packageName":"core"},{"url":"/core/decorators/watch/","label":"watch","category":"Core","designSystem":"Core","packageName":"core"}]}]}]');
-            </script>
-        </body>
-        </html>
-    
+                    </div>
+                </page-container>
+                
+                <script>
+                    const nav = document.getElementById('nav');
+                    nav.items = JSON.parse('[{"label":"Getting Started","items":[{"url":"/core/","label":"Overview"},{"url":"/core/installation/","label":"Installation"},{"url":"/core/usage/","label":"Usage"},{"url":"/core/theming/","label":"Theming"}]},{"label":"Base Components","items":[{"url":"/core/components/base-components-overview/","label":"Overview"},{"label":"Core ","items":[{"url":"/core/components/QuarkButton/","label":"Button ","category":"Core ","designSystem":"Core","packageName":"core"},{"url":"/core/components/QuarkElement/","label":"Element ","category":"Core ","designSystem":"Core","packageName":"core"},{"url":"/core/components/QuarkIcon/","label":"Icon ","category":"Core ","designSystem":"Core","packageName":"core"},{"url":"/core/components/QuarkPanel/","label":"Panel ","category":"Core ","designSystem":"Core","packageName":"core"}]}]},{"label":"Mixins","items":[{"url":"/core/mixins/","label":"Overview"}]},{"label":"Controllers","items":[{"url":"/core/controllers/","label":"Overview"}]},{"label":"Decorators","items":[{"url":"/core/decorators/","label":"Overview"},{"label":"Core","items":[{"url":"/core/decorators/event/","label":"event","category":"Core","designSystem":"Core","packageName":"core"},{"url":"/core/decorators/listen/","label":"listen","category":"Core","designSystem":"Core","packageName":"core"},{"url":"/core/decorators/watch/","label":"watch","category":"Core","designSystem":"Core","packageName":"core"}]}]}]');
+                </script>
+            </body>
+            </html>
+        
